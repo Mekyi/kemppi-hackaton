@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="styles/main.css">
   <script src="main.js"></script>
-  <script src="path/to/chartjs/dist/Chart.js"></script>
   <link rel="stylesheet" href="https://use.typekit.net/suw2qiv.css">
+  <script src="node_modules/chart.js/dist/Chart.js"></script>
 </head>
 <body>
     <div class="navigation-bar">
@@ -19,5 +19,15 @@
 
 
 </div> 
+  <div>
+  <canvas id="co2-chart" width="5px" height="5px"></canvas>
+  </div>
+  <div>
+  <canvas id="temp-chart" width="200" height="200"></canvas>
+  </div>
+  <div>
+  <canvas id="db-chart" width="200" height="200"></canvas>
+  </div>
+  <script src="main.js"></script>
 </body>
 </html>
