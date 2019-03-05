@@ -51,7 +51,7 @@ var loudnessChart = new Chart(chart3, {
             label: 'loudness',
             data: [50, 50],
             backgroundColor: [
-                'blue',
+                '#F57300',
                 'white'
             ],
             borderColor: [
@@ -70,8 +70,8 @@ var loudnessChart = new Chart(chart3, {
                 elements: {
                     center: {
                     text: "60dB",
-                    color: "blue",
-                    fontStyle: 'helvetica',
+                    color: "black",
+                    fontStyle: 'proxima-nova',
                     sidePadding: 2
                     }
                 },
@@ -90,7 +90,7 @@ var co2Chart = new Chart(chart1, {
             label: 'co2',
             data: [50, 50],
             backgroundColor: [
-                'blue',
+                '#F57300',
                 'white'
             ],
             borderColor: [
@@ -109,8 +109,8 @@ var co2Chart = new Chart(chart1, {
                 elements: {
                     center: {
                     text: "0,5%",
-                    color: "blue",
-                    fontStyle: 'helvetica',
+                    color: "black",
+                    fontStyle: 'proxima-nova',
                     sidePadding: 2
                     }
                 },

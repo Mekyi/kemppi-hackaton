@@ -30,13 +30,13 @@ body {
 #chart-container {
   border: solid grey;
   padding: 10px;
-  background-color: lightgrey;
+  background-color: #ffffff;
   display: inline-block;
 }
 
 .temperature {
   width: 326px;
-  height: 176px;
+  height: 222px;
 }
 
 .temperature-number {
@@ -54,4 +54,8 @@ body {
   right: 249px;
   top: 10px;
   margin-bottom: 20px;
+}
+
+.progress-bar {
+  background-color: #F57300;
 }
