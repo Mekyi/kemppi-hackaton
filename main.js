@@ -2,7 +2,18 @@ var chart1 = document.getElementById("co2-chart");
 var chart3 = document.getElementById("db-chart");
 var chart4 = document.getElementById("history-chart");
 
-var chartTestData = [0,10,5,20,25,12];
+var chartTestData = [{
+    "timestamp":"05/03/2019, 08:11:22","type":"TEMP","value":22.5},
+    {"timestamp":"05/03/2019, 09:12:22","type":"TEMP","value":22.5},
+    {"timestamp":"05/03/2019, 10:13:22","type":"TEMP","value":22.5},
+    {"timestamp":"05/03/2019, 11:14:23","type":"TEMP","value":22.5},
+    {"timestamp":"05/03/2019, 12:15:23","type":"TEMP","value":22.5},
+    {"timestamp":"05/03/2019, 13:14:23","type":"TEMP","value":22.5},
+    {"timestamp":"05/03/2019, 14:14:23","type":"TEMP","value":22.5},
+    {"timestamp":"05/03/2019, 15:14:23","type":"TEMP","value":22.5},
+    {"timestamp":"05/03/2019, 16:14:23","type":"TEMP","value":22.5},
+    {"timestamp":"05/03/2019, 17:14:23","type":"TEMP","value":22.5},
+    {"timestamp":"05/03/2019, 18:14:23","type":"TEMP","value":22.5}];
 
 var plugin = Chart.pluginService.register({
     beforeDraw: function (chart) {
@@ -154,14 +165,18 @@ window.onclick = function(event) {
   }
 }
 function createHistory(chartdata, chartlabel){
+    var labels = chartdata.map(function(e) {
+        return e.timestamp;});
+    var data = chartdata.map(function(e) {
+        return e.value;});
     var historyChart = new Chart(chart4, {
         type: 'line',
         data: {
-            labels: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+            labels: labels,
             xAxisID: "time",
             yAxisID: chartlabel,
             datasets: [{
-                data: chartdata
+                data: data
     
             }],
             borderDash: [10,5]
