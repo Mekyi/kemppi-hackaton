@@ -1,4 +1,18 @@
 var chart4 = document.getElementById("history-chart");
+
+var chartTestData = [{
+    "timestamp":"05/03/2019, 08:11:22","type":"TEMP","value":22.5},
+    {"timestamp":"05/03/2019, 09:12:22","type":"TEMP","value":22.5},
+    {"timestamp":"05/03/2019, 10:13:22","type":"TEMP","value":22.5},
+    {"timestamp":"05/03/2019, 11:14:23","type":"TEMP","value":22.5},
+    {"timestamp":"05/03/2019, 12:15:23","type":"TEMP","value":22.5},
+    {"timestamp":"05/03/2019, 13:14:23","type":"TEMP","value":22.5},
+    {"timestamp":"05/03/2019, 14:14:23","type":"TEMP","value":22.5},
+    {"timestamp":"05/03/2019, 15:14:23","type":"TEMP","value":22.5},
+    {"timestamp":"05/03/2019, 16:14:23","type":"TEMP","value":22.5},
+    {"timestamp":"05/03/2019, 17:14:23","type":"TEMP","value":22.5},
+    {"timestamp":"05/03/2019, 18:14:23","type":"TEMP","value":22.5}];
+
 var plugin = Chart.pluginService.register({
     beforeDraw: function (chart) {
       if (chart.config.options.elements.center) {
@@ -89,7 +103,7 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks on the button, open the modal 
 btn.onclick = function() {
   modal.style.display = "block";
-  createHistory();
+  createHistory(chartTestData, "air quality");
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -103,24 +117,46 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-function createHistory(){
-var historyChart = new Chart(chart4, {
-    type: 'line',
-    data: {
-        labels: ["temperature", "time"],
-        datasets: [{
-            label: "temperature",
-            data: [{
-                x: 10,
-                y: 20
-            }, {
-                x: 15,
-                y: 10
-            }]
-
-        }]
-    }
-});
+function createHistory(chartdata, chartlabel){
+    var labels = chartdata.map(function(e) {
+        return e.timestamp;});
+    var data = chartdata.map(function(e) {
+        return e.value;});
+    var historyChart = new Chart(chart4, {
+        type: 'line',
+        data: {
+            labels: labels,
+            xAxisID: "time",
+            yAxisID: chartlabel,
+            datasets: [{
+                data: data
+    
+            }],
+            borderDash: [10,5]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+                gridLines: {
+                    display: true,
+    
+                }
+            },
+            elements: {
+                point:{
+                    radius: 3,
+                    pointstyle: "circle"
+                },
+                line:{
+                    tension: 0
+                }
+            }
+        }
+    });
 }
 function addData(chart, label, data) {
     chart.data.labels.push(label);
