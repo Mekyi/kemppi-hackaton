@@ -67,11 +67,6 @@ var loudnessChart = new Chart(chart3, {
                 cutoutPercentage: '50',
                 circumference: 1.5 * Math.PI,
                 rotation: 0.75 * Math.PI,
-                title: {
-                    display: true,
-                    text: "Loudness",
-                    position: "bottom"
-                },
                 elements: {
                     center: {
                     text: "60dB",
@@ -111,11 +106,6 @@ var co2Chart = new Chart(chart1, {
                 cutoutPercentage: '50',
                 circumference: 1.5 * Math.PI,
                 rotation: 0.75 * Math.PI,
-                title: {
-                    display: true,
-                    text: "CO2",
-                    position: "bottom"
-                },
                 elements: {
                     center: {
                     text: "0,5%",

@@ -1,11 +1,13 @@
-
-
 body {
   font-family: proxima-nova, sans-serif;
   font-style: normal;
   font-weight: 100;
   margin: 0 auto;
   background-color: #ededed;
+}
+
+.container {
+  padding-top: 100px;
 }
 
 /* Style the navbar */
@@ -26,14 +28,10 @@ body {
 
 /* Chart */
 #chart-container {
-  border: solid lightgrey;
+  border: solid grey;
   padding: 10px;
-}
-
-#charts {
-  padding-top: 100px;
-  margin: auto;
-  vertical-align: middle;
+  background-color: lightgrey;
+  display: inline-block;
 }
 
 .temperature {
@@ -43,10 +41,17 @@ body {
 
 .temperature-number {
   text-align: center;
-  font-size: 75px;
-  padding: 10px;
+  font-size: 70px;
 }
 
-#temperature-label {
+#chart-label {
   text-align: center;
+}
+
+.divider {
+  border: 1px solid grey;
+  width: 300px;
+  right: 249px;
+  top: 10px;
+  margin-bottom: 20px;
 }
