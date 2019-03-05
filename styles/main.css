@@ -27,14 +27,14 @@ body {
 }
 
 /* Chart */
-#chart-container {
+.chart-container {
   border: solid grey;
   padding: 10px;
   background-color: #ffffff;
   display: inline-block;
 }
 
-.temperature {
+#temperature {
   width: 326px;
   height: 222px;
 }
