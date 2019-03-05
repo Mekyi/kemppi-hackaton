@@ -10,14 +10,16 @@
 </head>
 <body>
   <p>Hello World!</p>
-  <div>
-  <canvas id="co2-chart" width="5px" height="5px"></canvas>
-  </div>
-  <div>
-  <canvas id="temp-chart" width="200" height="200"></canvas>
-  </div>
-  <div>
-  <canvas id="db-chart" width="200" height="200"></canvas>
+  <div id="charts-container" style="width:100%; height:300px;">
+    <span class="chart-container" style="display: inline-block">
+      <canvas id="co2-chart"></canvas>
+    </span>
+    <span class="chart-container" style="display: inline-block">
+      <canvas id="temp-chart"></canvas>
+    </span>
+    <span class="chart-container" style="display: inline-block">
+      <canvas id="db-chart"></canvas>
+    </span>
   </div>
   <script src="main.js"></script>
 </body>

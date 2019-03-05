@@ -42,7 +42,6 @@ var plugin = Chart.pluginService.register({
       }
     }
   });
-
 var co2Chart = new Chart(chart2, {
     type: 'doughnut',
     data: {
@@ -72,12 +71,10 @@ var co2Chart = new Chart(chart2, {
                     text: "0,5%",
                     color: "blue",
                     fontStyle: 'helvetica',
-                    sidePadding: 15
+                    sidePadding: 2
                     }
                 },
-                legend: {
-                    
-                }
+                maintainAspectRatio: true
     },
     plugins: plugin
 });
@@ -98,7 +95,8 @@ var co2Chart = new Chart(chart3, {
             ],
             borderWidth: 1,
             
-        }]
+        }],
+        maintainAspectRatio: true
         
     },
     options: {
@@ -110,11 +108,8 @@ var co2Chart = new Chart(chart3, {
                     text: "0,5%",
                     color: "blue",
                     fontStyle: 'helvetica',
-                    sidePadding: 15
+                    sidePadding: 2
                     }
-                },
-                legend: {
-                    
                 }
     },
     plugins: plugin
@@ -148,12 +143,10 @@ var co2Chart = new Chart(chart1, {
                     text: "0,5%",
                     color: "blue",
                     fontStyle: 'helvetica',
-                    sidePadding: 15
+                    sidePadding: 2
                     }
                 },
-                legend: {
-                    
-                }
+                maintainAspectRatio: true
     },
     plugins: plugin
 });
