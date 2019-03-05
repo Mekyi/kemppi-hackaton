@@ -2,7 +2,7 @@ var chart1 = document.getElementById("co2-chart");
 var chart3 = document.getElementById("db-chart");
 var chart4 = document.getElementById("history-chart");
 
-var chartTestData = [{"x": 1, "y": 3}, {"x": 9, "y": 9}, {"x": 5, "y": 5}, {"x": 2, "y": 8}, {"x": 12, "y": 7}, {"x": 23, "y": 6}];
+var chartTestData = [0,10,5,20,25,12];
 
 var plugin = Chart.pluginService.register({
     beforeDraw: function (chart) {
@@ -157,12 +157,14 @@ function createHistory(chartdata, chartlabel){
     var historyChart = new Chart(chart4, {
         type: 'line',
         data: {
-            labels: [chartlabel, "time"],
+            labels: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+            xAxisID: "time",
+            yAxisID: chartlabel,
             datasets: [{
-                label: chartlabel,
                 data: chartdata
     
-            }]
+            }],
+            borderDash: [10,5]
         },
         options: {
             scales: {
@@ -170,7 +172,20 @@ function createHistory(chartdata, chartlabel){
                     ticks: {
                         beginAtZero: true
                     }
-                }]
+                }],
+                gridLines: {
+                    display: true,
+    
+                }
+            },
+            elements: {
+                point:{
+                    radius: 3,
+                    pointstyle: "circle"
+                },
+                line:{
+                    tension: 0
+                }
             }
         }
     });
