@@ -1,6 +1,6 @@
 var chart1 = document.getElementById("co2-chart");
-var chart2 = document.getElementById("temp-chart");
 var chart3 = document.getElementById("db-chart");
+var chart4 = document.getElementById("history-chart");
 var plugin = Chart.pluginService.register({
     beforeDraw: function (chart) {
       if (chart.config.options.elements.center) {
@@ -42,7 +42,6 @@ var plugin = Chart.pluginService.register({
       }
     }
   });
-
 var loudnessChart = new Chart(chart3, {
     type: 'doughnut',
     data: {
@@ -75,6 +74,8 @@ var loudnessChart = new Chart(chart3, {
                     sidePadding: 2
                     }
                 },
+                tooltips: {enabled: false},
+                hover: {mode: null},
                 maintainAspectRatio: true,
                 legend: {
                     display: false
@@ -114,6 +115,8 @@ var co2Chart = new Chart(chart1, {
                     sidePadding: 2
                     }
                 },
+                tooltips: {enabled: false},
+                hover: {mode: null},
                 maintainAspectRatio: true,
                 legend: {
                     display: false
@@ -121,3 +124,55 @@ var co2Chart = new Chart(chart1, {
     },
     plugins: plugin
 });
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+  createHistory();
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+function createHistory(){
+var historyChart = new Chart(chart4, {
+    type: 'line',
+    data: {
+        labels: ["temperature", "time"],
+        datasets: [{
+            label: "temperature",
+            data: [{
+                x: 10,
+                y: 20
+            }, {
+                x: 15,
+                y: 10
+            }]
+
+        }]
+    }
+});
+}
+function addData(chart, label, data) {
+    chart.data.labels.push(label);
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.push(data);
+    });
+    chart.update();
+}
