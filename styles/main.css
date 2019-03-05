@@ -8,6 +8,7 @@ body {
 
 .container {
   padding-top: 100px;
+  margin-bottom: 50px;
 }
 
 /* Style the navbar */
@@ -32,14 +33,11 @@ body {
   padding: 10px;
   background-color: #ffffff;
   display: inline-block;
-}
-
-#temperature {
   width: 326px;
   height: 222px;
 }
 
-.temperature-number {
+#value {
   text-align: center;
   font-size: 70px;
 }
@@ -56,7 +54,7 @@ body {
   margin-bottom: 20px;
 }
 
-.progress-bar {
+#temperature-bar {
   background-color: #F57300;
 }
 

@@ -20,27 +20,30 @@
   <div class="container">
     <div class="row">
       <div class="col-sm">
-        <span class="chart-container" id="co2">
-          <div id="chart-label">CO2</div>
-          <div class="divider"></div>
-          <canvas id="co2-chart"></canvas>
+        <span class="chart-container" id="air-quality">
+            <div id="chart-label">AIR QUALITY</div>
+            <div class="divider"></div>
+            <div class="air-quality-value" id="value">GOOD</div>
+            <div class="progress">
+                <div class="progress-bar" id="air-quality-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
         </span>
       </div>
       <div class="col-sm">
         <span class="chart-container" id="temperature">
-          <div id="chart-label">Temperature</div>
+          <div id="chart-label">TEMPERATURE</div>
           <div class="divider"></div>
-          <div class="temperature-number">10 °C</div>
+          <div class="temperature-value" id="value">10 °C</div>
           <div class="progress">
-            <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="progress-bar" id="temperature-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
         </span>
       </div>
         <div class="col-sm">
-        <span class="chart-container" id="decibels" >
-            <div id="chart-label">Decibels</div>
-            <div class="divider"></div>
-          <canvas id="db-chart"></canvas>
+        <span class="chart-container" id="audio" >
+          <div id="chart-label">VOLUME LEVEL</div>
+          <div class="divider"></div>
+          <div class="audio-value" id="value">GOOD</div>
         </span>
       </div>
     </div>
@@ -67,9 +70,9 @@
 
 </div>
 </div>
-  <script src="main.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="main.js"></script>
 </body>
 </html>

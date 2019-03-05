@@ -1,5 +1,3 @@
-var chart1 = document.getElementById("co2-chart");
-var chart3 = document.getElementById("db-chart");
 var chart4 = document.getElementById("history-chart");
 var plugin = Chart.pluginService.register({
     beforeDraw: function (chart) {
@@ -42,88 +40,43 @@ var plugin = Chart.pluginService.register({
       }
     }
   });
-var loudnessChart = new Chart(chart3, {
-    type: 'doughnut',
-    data: {
-        labels: ["loudness"],
-        datasets: [{
-            label: 'loudness',
-            data: [50, 50],
-            backgroundColor: [
-                '#F57300',
-                'white'
-            ],
-            borderColor: [
-                'black',
-                'black'
-            ],
-            borderWidth: 1,
-            
-        }]
-        
-    },
-    options: {
-                cutoutPercentage: '50',
-                circumference: 1.5 * Math.PI,
-                rotation: 0.75 * Math.PI,
-                elements: {
-                    center: {
-                    text: "60dB",
-                    color: "black",
-                    fontStyle: 'proxima-nova',
-                    sidePadding: 2
-                    }
-                },
-                tooltips: {enabled: false},
-                hover: {mode: null},
-                maintainAspectRatio: true,
-                legend: {
-                    display: false
-                }
-    },
-    plugins: plugin
-});
-var co2Chart = new Chart(chart1, {
-    type: 'doughnut',
-    data: {
-        labels: ["CO2"],
-        datasets: [{
-            label: 'co2',
-            data: [50, 50],
-            backgroundColor: [
-                '#F57300',
-                'white'
-            ],
-            borderColor: [
-                'black',
-                'black'
-            ],
-            borderWidth: 1,
-            
-        }]
-        
-    },
-    options: {
-                cutoutPercentage: '50',
-                circumference: 1.5 * Math.PI,
-                rotation: 0.75 * Math.PI,
-                elements: {
-                    center: {
-                    text: "0,5%",
-                    color: "black",
-                    fontStyle: 'proxima-nova',
-                    sidePadding: 2
-                    }
-                },
-                tooltips: {enabled: false},
-                hover: {mode: null},
-                maintainAspectRatio: true,
-                legend: {
-                    display: false
-                }
-    },
-    plugins: plugin
-});
+
+function updateAirQuality(value) {
+    var qualityString;
+    var goodColor = '#3f993a';
+    var mediumColor = '#ffd400';
+    var badColor = '#F57300';
+
+    if (value < 33) {
+        qualityString = 'GOOD'
+        $('#air-quality-bar').attr('class', 'progress-bar bg-success');
+    } else if (value >= 33) {
+        qualityString = 'MEDIUM'
+        $('#air-quality-bar').attr('class', 'progress-bar bg-warning');
+    } else if (value > 66) {
+        qualityString = 'BAD'
+        $('#air-quality-bar').attr('class', 'progress-bar bg-danger');
+    }
+
+    $('#air-quality-bar').attr('style', 'width:' + value +'%');
+    $('.air-quality-value').text(qualityString);
+}
+
+function updateTemperature(value) {
+    $('#temperature-bar').attr('style', 'width:' + value +'%');
+    $('.temperature-value').text(value + ' °C');
+}
+
+function updateAudioLevel(value) {
+    if (value === true) {
+        $('.audio-value').text('TOO LOUD');
+        $('.audio-value').css('color', '#F57300');
+    } else {
+        $('.audio-value').text('GOOD');
+        $('.audio-value').css('color', '#3f993a');
+    }
+}
+
 // Get the modal
 var modal = document.getElementById('myModal');
 
@@ -176,3 +129,51 @@ function addData(chart, label, data) {
     });
     chart.update();
 }
+
+function getSound() {
+    var req = new XMLHttpRequest();
+    var url = "http://health-safety.dev.api.kemppi.com:8080/api/sensordata?type=SOUND";
+
+    req.open("GET", url, false);
+    req.setRequestHeader("Authorization","Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZWFtXzUifQ.tvjterUP5Z5Zb2SVcdPUsKkGtC1DPBlKDxmLB0y1iMI");
+    req.send();
+
+    var result = JSON.parse(req.responseText);
+    return result.data[result.data.length - 1].value;
+}
+
+function getAir() {
+    var req = new XMLHttpRequest();
+    var url = "http://health-safety.dev.api.kemppi.com:8080/api/sensordata?type=AIR";
+
+    req.open("GET", url, false);
+    req.setRequestHeader("Authorization","Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZWFtXzUifQ.tvjterUP5Z5Zb2SVcdPUsKkGtC1DPBlKDxmLB0y1iMI");
+    req.send();
+
+    var result = JSON.parse(req.responseText);
+    return result.data[result.data.length - 1].value;
+}
+
+function getTemp() {
+    var req = new XMLHttpRequest();
+    var url = "http://health-safety.dev.api.kemppi.com:8080/api/sensordata?type=TEMP";
+
+    req.open("GET", url, false);
+    req.setRequestHeader("Authorization","Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZWFtXzUifQ.tvjterUP5Z5Zb2SVcdPUsKkGtC1DPBlKDxmLB0y1iMI");
+    req.send();
+
+    var result = JSON.parse(req.responseText);
+    return result.data[result.data.length - 1].value;
+}
+
+function updateCharts() {
+    updateTemperature(getTemp());
+    updateAirQuality(getAir());
+    updateAudioLevel(getSound());
+}
+
+updateCharts();
+
+setInterval(() => {
+    updateCharts();
+}, 30000);
