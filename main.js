@@ -42,45 +42,7 @@ var plugin = Chart.pluginService.register({
       }
     }
   });
-var tempChart = new Chart(chart2, {
-    type: 'doughnut',
-    data: {
-        labels: ["CO2"],
-        datasets: [{
-            label: 'co2',
-            data: [50, 50],
-            backgroundColor: [
-                'blue',
-                'white'
-            ],
-            borderColor: [
-                'black',
-                'black'
-            ],
-            borderWidth: 1,
-            
-        }]
-        
-    },
-    options: {
-                cutoutPercentage: '50',
-                circumference: 1.5 * Math.PI,
-                rotation: 0.75 * Math.PI,
-                elements: {
-                    center: {
-                    text: "0,5%",
-                    color: "blue",
-                    fontStyle: 'helvetica',
-                    sidePadding: 2
-                    }
-                },
-                maintainAspectRatio: true,
-                legend: {
-                    display: false
-                }
-    },
-    plugins: plugin
-});
+
 var loudnessChart = new Chart(chart3, {
     type: 'doughnut',
     data: {

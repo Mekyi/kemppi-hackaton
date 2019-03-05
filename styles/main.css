@@ -1,3 +1,5 @@
+
+
 body {
   font-family: proxima-nova, sans-serif;
   font-style: normal;
@@ -16,24 +18,35 @@ body {
 }
 
 .logo {
-  padding: 10px 15px;
-  height: 36.88px;
-  width: 161.84px;
+  padding: 15px 15px;
+  width: 150px;
+  margin: auto;
   vertical-align: middle;
 }
 
 /* Chart */
-.chart-container {
+#chart-container {
   border: solid lightgrey;
   padding: 10px;
 }
 
 #charts {
   padding-top: 100px;
+  margin: auto;
+  vertical-align: middle;
 }
 
-.center {
-  margin: auto;
-  width: 50%;
+.temperature {
+  width: 326px;
+  height: 176px;
+}
+
+.temperature-number {
+  text-align: center;
+  font-size: 75px;
   padding: 10px;
+}
+
+#temperature-label {
+  text-align: center;
 }
