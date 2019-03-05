@@ -1,6 +1,9 @@
 var chart1 = document.getElementById("co2-chart");
 var chart3 = document.getElementById("db-chart");
 var chart4 = document.getElementById("history-chart");
+
+var chartTestData = [{"x": 1, "y": 3}, {"x": 9, "y": 9}, {"x": 5, "y": 5}, {"x": 2, "y": 8}, {"x": 12, "y": 7}, {"x": 23, "y": 6}];
+
 var plugin = Chart.pluginService.register({
     beforeDraw: function (chart) {
       if (chart.config.options.elements.center) {
@@ -136,7 +139,7 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks on the button, open the modal 
 btn.onclick = function() {
   modal.style.display = "block";
-  createHistory();
+  createHistory(chartTestData, "air quality");
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -150,24 +153,27 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-function createHistory(){
-var historyChart = new Chart(chart4, {
-    type: 'line',
-    data: {
-        labels: ["temperature", "time"],
-        datasets: [{
-            label: "temperature",
-            data: [{
-                x: 10,
-                y: 20
-            }, {
-                x: 15,
-                y: 10
+function createHistory(chartdata, chartlabel){
+    var historyChart = new Chart(chart4, {
+        type: 'line',
+        data: {
+            labels: [chartlabel, "time"],
+            datasets: [{
+                label: chartlabel,
+                data: chartdata
+    
             }]
-
-        }]
-    }
-});
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
 }
 function addData(chart, label, data) {
     chart.data.labels.push(label);
