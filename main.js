@@ -42,7 +42,7 @@ var plugin = Chart.pluginService.register({
       }
     }
   });
-var co2Chart = new Chart(chart2, {
+var tempChart = new Chart(chart2, {
     type: 'doughnut',
     data: {
         labels: ["CO2"],
@@ -74,16 +74,19 @@ var co2Chart = new Chart(chart2, {
                     sidePadding: 2
                     }
                 },
-                maintainAspectRatio: true
+                maintainAspectRatio: true,
+                legend: {
+                    display: false
+                }
     },
     plugins: plugin
 });
-var co2Chart = new Chart(chart3, {
+var loudnessChart = new Chart(chart3, {
     type: 'doughnut',
     data: {
-        labels: ["CO2"],
+        labels: ["loudness"],
         datasets: [{
-            label: 'co2',
+            label: 'loudness',
             data: [50, 50],
             backgroundColor: [
                 'blue',
@@ -95,21 +98,29 @@ var co2Chart = new Chart(chart3, {
             ],
             borderWidth: 1,
             
-        }],
-        maintainAspectRatio: true
+        }]
         
     },
     options: {
                 cutoutPercentage: '50',
                 circumference: 1.5 * Math.PI,
                 rotation: 0.75 * Math.PI,
+                title: {
+                    display: true,
+                    text: "Loudness",
+                    position: "bottom"
+                },
                 elements: {
                     center: {
-                    text: "0,5%",
+                    text: "60dB",
                     color: "blue",
                     fontStyle: 'helvetica',
                     sidePadding: 2
                     }
+                },
+                maintainAspectRatio: true,
+                legend: {
+                    display: false
                 }
     },
     plugins: plugin
@@ -138,6 +149,11 @@ var co2Chart = new Chart(chart1, {
                 cutoutPercentage: '50',
                 circumference: 1.5 * Math.PI,
                 rotation: 0.75 * Math.PI,
+                title: {
+                    display: true,
+                    text: "CO2",
+                    position: "bottom"
+                },
                 elements: {
                     center: {
                     text: "0,5%",
@@ -146,7 +162,10 @@ var co2Chart = new Chart(chart1, {
                     sidePadding: 2
                     }
                 },
-                maintainAspectRatio: true
+                maintainAspectRatio: true,
+                legend: {
+                    display: false
+                }
     },
     plugins: plugin
 });
