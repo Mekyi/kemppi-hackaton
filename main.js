@@ -91,6 +91,10 @@ function updateAudioLevel(value) {
     }
 }
 
+function updateEvents(value) {
+    $('#alert').text('Number of events: ' + value);
+}
+
 // Get the modal
 var modal = document.getElementById('myModal');
 
@@ -202,14 +206,28 @@ function getTemp() {
     return result.data[result.data.length - 1].value;
 }
 
-function updateCharts() {
+function getAllEvents() {
+    //Get all records
+    let req = new XMLHttpRequest();
+    let url = "http://health-safety.dev.api.kemppi.com:8080/api/sensordata?type=EVENT";
+
+    req.open("GET", url, false);
+    req.setRequestHeader("Authorization","Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZWFtXzUifQ.tvjterUP5Z5Zb2SVcdPUsKkGtC1DPBlKDxmLB0y1iMI");
+    req.send();
+
+    console.log(JSON.parse(req.responseText));
+    return JSON.parse(req.responseText);
+}
+
+function updateData() {
     updateTemperature(getTemp());
     updateAirQuality(getAir());
     updateAudioLevel(getSound());
+    updateEvents(getAllEvents().data.length)
 }
 
-updateCharts();
+updateData();
 
 setInterval(() => {
-    updateCharts();
+    updateData();
 }, 30000);
